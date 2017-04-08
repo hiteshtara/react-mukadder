@@ -24,7 +24,7 @@ export default {
           path.join(__dirname, 'client'),
          
         
-        loaders: [  'babel' ]
+        loaders: [ 'react-hot', 'babel' ]
       }
     ]
   },
