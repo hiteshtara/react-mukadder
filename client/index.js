@@ -1,5 +1,17 @@
 import React from 'react'
 import { render} from 'react-dom'
 import { Router,browserHistory} from 'react-router'
+import {Provider } from 'react-redux'
 import routes from './routes';
-render (<Router histrory = {browserHistory}routes ={routes}/> ,document.getElementById('app'))
+import thunk from 'redux-thunk'
+import {createStore,applyMiddleware} from 'redux'
+// thunk middle ware allow us to dispatch async actions
+const store = createStore(
+    (state ={})=>state,
+    applyMiddleware(thunk)
+)
+render (
+    <Provider store = {store}>
+    <Router histrory = {browserHistory}routes ={routes}/>
+    </Provider>
+     ,document.getElementById('app'))
