@@ -21,7 +21,9 @@ constructor(props) {
   }
   onSubmit(e) {
       e.preventDefault()
-      axios.post('/api/users',{user:this.state})
+     // axios.post('/api/users',{user:this.state})
+     // now this function is passed by redux as props 
+     this.props.userSignupRequest(this.state)
   }
     render() {
         const options = map(timezones, (val, key) =>
@@ -107,5 +109,9 @@ constructor(props) {
 
         )
     }
+}
+SignupForm.propTypes = {
+    
+    userSignupRequest: React.PropTypes.func.isRequired
 }
 export default SignupForm
