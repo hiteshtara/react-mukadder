@@ -12,7 +12,8 @@ constructor(props) {
         password:'',
         passwordConfirmation:'',
         timezone:'',
-        errors:{}
+        errors:{},
+        isLoading:false
         
        
          
@@ -25,14 +26,14 @@ constructor(props) {
       this.setState({[e.target.name]:e.target.value})
   }
  onSubmit(e) {
-     this.setState({errors:{}})
+     this.setState({errors:{},isLoading:true})
     e.preventDefault();
       this.setState({ errors: {}, isLoading: true });
       this.props.userSignupRequest(this.state).then(
         () => {
           
         },
-        (err) => this.setState({ errors: err.response.data })
+        (err) => this.setState({ errors: err.response.data ,isLoading:false})
       );
     
   }
@@ -107,7 +108,7 @@ constructor(props) {
      
      
      <div className ="form-group">
-     <button className = "btn btn-prmary btn-lg">
+     <button disabled = {this.state.isLoading} className = "btn btn-prmary btn-lg">
      Sign up 
      </button>
      </div>
