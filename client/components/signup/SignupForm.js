@@ -32,7 +32,7 @@ constructor(props) {
       this.setState({ errors: {}, isLoading: true });
       this.props.userSignupRequest(this.state).then(
         () => {
-          //browserHistory.push('/')
+          //browserHistory.push('/') this dis not work 
           this.context.router.push('/')
         },
         (err) => this.setState({ errors: err.response.data ,isLoading:false})
