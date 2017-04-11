@@ -2,6 +2,7 @@ import React from 'react'
 import map from 'lodash/map'
 import timezones from '../../data/timezones';
 import axios from'axios'
+import classnames from 'classnames';
 class SignupForm extends React.Component {
 constructor(props) {
     super(props);
@@ -45,7 +46,7 @@ constructor(props) {
      <form onSubmit ={this.onSubmit}> 
      <h1> Join our community </h1> 
 
-     <div className ="form-group">
+     <div className ={classnames("form-group",{'has-error':errors.username})}>
      <label className ="control-label">UserName </label>
 
      <input 
