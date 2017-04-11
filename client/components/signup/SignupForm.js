@@ -3,6 +3,7 @@ import map from 'lodash/map'
 import timezones from '../../data/timezones';
 import axios from'axios'
 import classnames from 'classnames';
+import {browserHistory} from 'react-router'
 class SignupForm extends React.Component {
 constructor(props) {
     super(props);
@@ -31,7 +32,8 @@ constructor(props) {
       this.setState({ errors: {}, isLoading: true });
       this.props.userSignupRequest(this.state).then(
         () => {
-          
+          //browserHistory.push('/')
+          this.context.router.push('/')
         },
         (err) => this.setState({ errors: err.response.data ,isLoading:false})
       );
@@ -128,5 +130,8 @@ constructor(props) {
 SignupForm.propTypes = {
     
     userSignupRequest: React.PropTypes.func.isRequired
+}
+SignupForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 export default SignupForm
