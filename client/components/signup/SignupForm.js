@@ -10,7 +10,8 @@ constructor(props) {
         email:'',
         password:'',
         passwordConfirmation:'',
-        timezone:''
+        timezone:'',
+        errors:{}
         
        
          
@@ -23,6 +24,7 @@ constructor(props) {
       this.setState({[e.target.name]:e.target.value})
   }
  onSubmit(e) {
+     this.setState({errors:{}})
     e.preventDefault();
       this.setState({ errors: {}, isLoading: true });
       this.props.userSignupRequest(this.state).then(
@@ -34,6 +36,7 @@ constructor(props) {
     
   }
     render() {
+        const {errors}=this.state;
         const options = map(timezones, (val, key) =>
       <option key={val} value={val}>{key}</option>
     );
@@ -52,6 +55,7 @@ constructor(props) {
      value = {this.state.username}
      onChange ={this.onChange}
      />
+     {errors.username &&<span className="help-block">{errors.username}</span>}
      </div>
      <div className ="form-group">
      <label className ="control-label">email </label>
