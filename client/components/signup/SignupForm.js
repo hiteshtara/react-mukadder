@@ -11,6 +11,9 @@ constructor(props) {
         password:'',
         passwordConfirmation:'',
         timezone:''
+        
+       
+         
     }
     this.onChange =this.onChange.bind(this)
     this.onSubmit=this.onSubmit.bind(this)
@@ -19,11 +22,16 @@ constructor(props) {
   onChange(e) {
       this.setState({[e.target.name]:e.target.value})
   }
-  onSubmit(e) {
-      e.preventDefault()
-     // axios.post('/api/users',{user:this.state})
-     // now this function is passed by redux as props 
-     this.props.userSignupRequest(this.state)
+ onSubmit(e) {
+    e.preventDefault();
+      this.setState({ errors: {}, isLoading: true });
+      this.props.userSignupRequest(this.state).then(
+        () => {
+          
+        },
+        (err) => this.setState({ errors: err.response.data })
+      );
+    
   }
     render() {
         const options = map(timezones, (val, key) =>
