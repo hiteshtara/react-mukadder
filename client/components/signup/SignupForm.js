@@ -58,7 +58,8 @@ constructor(props) {
      />
      {errors.username &&<span className="help-block">{errors.username}</span>}
      </div>
-     <div className ="form-group">
+          <div className ={classnames("form-group",{'has-error':errors.email})}>
+
      <label className ="control-label">email </label>
 
      <input 
@@ -69,7 +70,7 @@ constructor(props) {
      onChange ={this.onChange}
      />
      </div>
-     <div className ="form-group">
+     <div className ={classnames("form-group",{'has-error':errors.password})}>
      <label className ="control-label">password </label>
 
      <input 
@@ -80,7 +81,7 @@ constructor(props) {
      onChange ={this.onChange}
      />
      </div>
-     <div className ="form-group">
+     <div className ={classnames("form-group",{'has-error':errors.passwordConfirmation})}>
      <label className ="control-label">passwordConfirmation </label>
 
      <input 
@@ -91,7 +92,7 @@ constructor(props) {
      onChange ={this.onChange}
      />
      </div>
-     <div className ="form-group">
+     <div className ={classnames("form-group",{'has-error':errors.timezone})}>
      <label className ="control-label">Timezone</label>
      <select 
      className ="form-control"
